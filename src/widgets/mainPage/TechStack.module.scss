@@ -1,0 +1,130 @@
+/* ── SECTION COMMON ── */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionNumber {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.sectionLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── REVEAL ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── TECH STACK ── */
+
+.techSection {
+  padding: 8rem 3rem;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  @media (max-width: 768px) {
+    padding: 5rem 1.5rem;
+  }
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.techCategory {
+  background: var(--bg-secondary);
+  padding: 2.5rem;
+  transition: background 0.4s ease;
+
+  &:hover {
+    background: var(--bg-card);
+  }
+}
+
+.techCategoryLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--accent);
+    display: inline-block;
+  }
+}
+
+.techItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.techItem {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  transition: all 0.3s ease;
+  cursor: default;
+
+  &:hover {
+    color: var(--accent);
+    border-color: rgba(6, 182, 212, 0.3);
+    background: rgba(6, 182, 212, 0.05);
+    transform: translateY(-2px);
+  }
+
+  &.primary {
+    color: var(--accent);
+    border-color: rgba(6, 182, 212, 0.25);
+    font-weight: 500;
+  }
+}
