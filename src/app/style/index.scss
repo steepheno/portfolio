@@ -6,13 +6,15 @@
   --text-primary: #f0f0f0;
   --text-secondary: #a0a0a0; /* 약간 밝게 조정 */
   --text-muted: #555555;
-  --accent: #22d3ee;          /* 시안 */
-  --accent-hover: #06b6d4;    /* hover용 진한 시안 */
+  --accent: #22d3ee; /* 시안 */
+  --accent-hover: #06b6d4; /* hover용 진한 시안 */
   --border: #222222;
   --border-hover: #333333;
   --font-display: 'Syne', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-body: 'Noto Sans KR', sans-serif;
+
+  --header-height: 70px;
 }
 
 *,
