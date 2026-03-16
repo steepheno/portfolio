@@ -2,46 +2,39 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './ProjectList.module.scss';
 
 /* ── 데이터 ── */
-
 interface Project {
   number: string;
   title: string;
   description: string;
   tags: string[];
-  mockLayout: 'grid' | 'sidebar' | 'list';
-  featured?: boolean;
+  image: string;
 }
 
 const PROJECTS: Project[] = [
   {
     number: 'PROJECT 01',
-    title: 'Shopping Mall',
-    description:
-      'FSD 아키텍처 기반 쇼핑몰 프로젝트. JWT 인증, 주소 관리 CRUD, 주문 내역 조회, 페이지네이션 등 실무 수준의 기능을 구현했습니다.',
-    tags: ['React', 'TypeScript', 'Zustand', 'TanStack Query', 'SCSS Modules', 'FSD'],
-    mockLayout: 'grid',
-    featured: true,
+    title: 'Choice & Appear 쇼핑몰 제작 프로젝트',
+    description: '사업자 등록 완료된 온라인 쇼핑몰로 운영될 웹 서비스',
+    tags: ['React', 'TypeScript', 'Zustand', 'TanStack Query', 'SCSS Modules', 'FSD Architecture'],
+    image: '/images/cna.png',
   },
   {
     number: 'PROJECT 02',
-    title: 'AI 사고 분석 서비스',
-    description:
-      '교통사고 영상 기반 과실 분석 플랫폼. 프론트엔드 리드로 EC2 영상 업로드, PDF 생성, 실시간 알림을 구현했습니다.',
-    tags: ['React', 'TanStack Query', 'Zustand', 'RabbitMQ'],
-    mockLayout: 'sidebar',
+    title: 'DOROLAW',
+    description: 'AI 기반 교통사고 과실 비율 분석 및 변호사 상담 매칭 플랫폼',
+    tags: ['React', 'TypeScript', 'TanStack Query', 'Zustand', 'Tailwind CSS'],
+    image: '/images/dorolaw.png',
   },
   {
     number: 'PROJECT 03',
     title: 'DevPilot',
-    description:
-      'CI/CD 배포 자동화 대시보드. FastAPI + Jenkins API 연동으로 배포 파이프라인을 시각화했습니다.',
-    tags: ['React', 'FastAPI', 'Jenkins', 'Dashboard'],
-    mockLayout: 'list',
+    description: '1인 개발자 및 CI/CD 초보자들을 위한 파이프라인 구축 및 배포 자동화 서비스',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Dashboard'],
+    image: '/images/devpilot.png',
   },
 ];
 
 /* ── 스크롤 Reveal 훅 ── */
-
 function useScrollReveal<T extends HTMLElement>(threshold = 0.15, delay = 0) {
   const ref = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -57,7 +50,7 @@ function useScrollReveal<T extends HTMLElement>(threshold = 0.15, delay = 0) {
           observer.unobserve(el);
         }
       },
-      { threshold },
+      { threshold }
     );
 
     observer.observe(el);
@@ -68,7 +61,6 @@ function useScrollReveal<T extends HTMLElement>(threshold = 0.15, delay = 0) {
 }
 
 /* ── 서브 컴포넌트 ── */
-
 function SectionHeader({ number, title }: { number: string; title: string }) {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
 
@@ -84,109 +76,46 @@ function SectionHeader({ number, title }: { number: string; title: string }) {
   );
 }
 
-function MockBrowser({ layout }: { layout: 'grid' | 'sidebar' | 'list' }) {
-  return (
-    <div className={styles.mockBrowser}>
-      <div className={styles.mockBar}>
-        <span className={styles.mockDot} />
-        <span className={styles.mockDot} />
-        <span className={styles.mockDot} />
-      </div>
-      <div className={styles.mockContent}>
-        {layout === 'grid' && (
-          <>
-            <div className={`${styles.mockLine} ${styles.w60}`} />
-            <div className={`${styles.mockLine} ${styles.w80}`} />
-            <div className={styles.mockBlocks}>
-              <div className={styles.mockBlock} />
-              <div className={styles.mockBlock} />
-              <div className={styles.mockBlock} />
-            </div>
-            <div className={styles.mockBlocks}>
-              <div className={styles.mockBlock} />
-              <div className={styles.mockBlock} />
-              <div className={styles.mockBlock} />
-            </div>
-          </>
-        )}
-        {layout === 'sidebar' && (
-          <>
-            <div className={`${styles.mockLine} ${styles.w40}`} />
-            <div className={styles.mockSidebarLayout}>
-              <div className={styles.mockSidebar}>
-                {[0, 1, 2, 3].map((i) => (
-                  <div key={i} className={styles.mockSidebarItem} />
-                ))}
-              </div>
-              <div className={styles.mockMainArea}>
-                <div className={styles.mockMainBlock} />
-                <div className={`${styles.mockLine} ${styles.w70}`} />
-              </div>
-            </div>
-          </>
-        )}
-        {layout === 'list' && (
-          <>
-            <div className={`${styles.mockLine} ${styles.w80}`} />
-            <div className={`${styles.mockLine} ${styles.w60}`} />
-            <div className={styles.mockBlocks}>
-              <div className={styles.mockBlock} />
-              <div className={styles.mockBlock} />
-            </div>
-            <div className={`${styles.mockLine} ${styles.w40}`} />
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
-
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>(0.1, index * 120);
 
   const cardClass = [
     styles.projectCard,
-    project.featured ? styles.featured : '',
+    index % 2 === 1 ? styles.reverse : '',
     isVisible ? styles.visible : '',
   ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div ref={ref} className={cardClass}>
-      {project.featured && (
-        <div className={styles.projectPreview}>
-          <div className={styles.previewPlaceholder}>
-            <div className={styles.previewGrid} />
-            <div className={styles.previewMock}>
-              <MockBrowser layout={project.mockLayout} />
-            </div>
-          </div>
+    <div
+      ref={ref}
+      className={cardClass}
+    >
+      <div className={styles.projectPreview}>
+        <div className={styles.previewPlaceholder}>
+          <div className={styles.previewGrid} />
+          <img
+            src={project.image}
+            alt={project.title}
+            className={styles.previewImage}
+          />
         </div>
-      )}
+      </div>
 
       <div className={styles.projectInfo}>
         <div className={styles.projectTop}>
           <span className={styles.projectNumber}>{project.number}</span>
           <span className={styles.projectArrow}>↗</span>
         </div>
-
-        {!project.featured && (
-          <div className={styles.projectPreview}>
-            <div className={styles.previewPlaceholder}>
-              <div className={styles.previewGrid} />
-              <div className={styles.previewMock}>
-                <MockBrowser layout={project.mockLayout} />
-              </div>
-            </div>
-          </div>
-        )}
-
         <h3 className={styles.projectTitle}>{project.title}</h3>
         <p className={styles.projectDesc}>{project.description}</p>
         <div className={styles.projectTags}>
-          {project.tags.map((tag) => (
-            <span key={tag} className={styles.projectTag}>
+          {project.tags.map(tag => (
+            <span
+              key={tag}
+              className={styles.projectTag}
+            >
               {tag}
             </span>
           ))}
@@ -197,15 +126,24 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 /* ── 메인 컴포넌트 ── */
-
 export default function ProjectList() {
   return (
-    <section className={styles.projectsSection} id="projects">
-      <SectionHeader number="02" title="Selected Projects" />
+    <section
+      className={styles.projectsSection}
+      id="projects"
+    >
+      <SectionHeader
+        number="02"
+        title="Project List"
+      />
 
       <div className={styles.projectsGrid}>
         {PROJECTS.map((project, i) => (
-          <ProjectCard key={project.number} project={project} index={i} />
+          <ProjectCard
+            key={project.number}
+            project={project}
+            index={i}
+          />
         ))}
       </div>
     </section>

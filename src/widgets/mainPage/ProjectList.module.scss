@@ -17,7 +17,7 @@
 
 .sectionNumber {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   color: var(--accent);
   letter-spacing: 0.15em;
 }
@@ -47,13 +47,9 @@
 }
 
 .projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .projectCard {
@@ -64,12 +60,22 @@
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  min-height: 380px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  min-height: 340px;
+  align-items: center;
 
   opacity: 0;
   transform: translateY(40px);
+
+  &.reverse {
+    direction: rtl;
+
+    > * {
+      direction: ltr;
+    }
+  }
 
   &.visible {
     opacity: 1;
@@ -111,30 +117,11 @@
     }
   }
 
-  &.featured {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 3rem;
-    min-height: 340px;
-    align-items: center;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
 
     .projectPreview {
-      height: 100%;
-      min-height: 240px;
-      margin-bottom: 0;
-    }
-
-    .projectTop {
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 1024px) {
-      grid-template-columns: 1fr;
-
-      .projectPreview {
-        min-height: 160px;
-      }
+      min-height: 160px;
     }
   }
 }
@@ -150,7 +137,8 @@
 
 .projectNumber {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.15em;
 }
@@ -164,9 +152,9 @@
 
 .projectPreview {
   width: 100%;
-  height: 160px;
+  height: 100%;
+  min-height: 240px;
   border: 1px solid var(--border);
-  margin-bottom: 2rem;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -176,12 +164,8 @@
 .previewPlaceholder {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-card) 100%);
   position: relative;
+  overflow: hidden;
 }
 
 .previewGrid {
@@ -191,15 +175,21 @@
     linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
   background-size: 20px 20px;
+  z-index: 1;
 }
 
-.previewMock {
-  position: relative;
-  z-index: 2;
+.previewImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  z-index: 0;
 }
 
 .projectInfo {
-  margin-top: auto;
   position: relative;
   z-index: 2;
 }
@@ -216,7 +206,7 @@
 .projectDesc {
   font-size: 0.9rem;
   font-weight: 300;
-  color: var(--text-secondary);
+  color: white;
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
@@ -230,7 +220,7 @@
 .projectTag {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: white;
   letter-spacing: 0.08em;
   padding: 0.3rem 0.7rem;
   border: 1px solid var(--border);
@@ -239,105 +229,6 @@
 
   .projectCard:hover & {
     border-color: rgba(6, 182, 212, 0.2);
-    color: var(--text-secondary);
+    color: white;
   }
-}
-
-/* ── MOCK BROWSER ── */
-
-.mockBrowser {
-  width: 180px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.mockBar {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 8px;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
-}
-
-.mockDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--text-muted);
-  opacity: 0.5;
-
-  &:first-child {
-    background: var(--accent);
-    opacity: 0.6;
-  }
-}
-
-.mockContent {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.mockLine {
-  height: 3px;
-  background: var(--border-hover);
-  border-radius: 2px;
-
-  &:first-child {
-    background: rgba(6, 182, 212, 0.2);
-  }
-}
-
-.w40 { width: 40%; }
-.w60 { width: 60%; }
-.w70 { width: 70%; }
-.w80 { width: 80%; }
-
-.mockBlocks {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 4px;
-  margin-top: 4px;
-}
-
-.mockBlock {
-  height: 18px;
-  background: var(--border);
-  border-radius: 2px;
-}
-
-.mockSidebarLayout {
-  display: flex;
-  gap: 6px;
-}
-
-.mockSidebar {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.mockSidebarItem {
-  height: 6px;
-  background: var(--border);
-  border-radius: 2px;
-}
-
-.mockMainArea {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.mockMainBlock {
-  height: 30px;
-  background: var(--border);
-  border-radius: 2px;
-  opacity: 0.6;
 }
