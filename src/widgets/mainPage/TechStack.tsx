@@ -66,7 +66,7 @@ const TECH_STACK: TechCategory[] = [
     ],
   },
   {
-    label: 'Architecture & Tools',
+    label: 'Tools & Collaboration',
     items: [
       { name: 'Git', icon: SiGit, color: '#F05032' },
       { name: 'Vite', icon: '/icons/vite.svg', color: '#646CFF', primary: true },
