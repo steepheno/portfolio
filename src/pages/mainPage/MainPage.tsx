@@ -28,9 +28,14 @@ export default function MainPage() {
             </span>
           </h1>
           <p className={styles.heroDesc}>
-            확장성을 고려한 개발 환경 구축과 직관적인 UI 구현,
+            통계학 복수전공으로 쌓은 데이터의 구조와 특성 파악 역량을 토대로
             <br />
-            사용자 경험 극대화를 추구하며 개발합니다.
+            서버–클라이언트 간 데이터 흐름을 설계하는
+            <br />
+            <strong>데이터 친화적 프론트엔드 개발자</strong>입니다.
+            <br />
+            <br />
+            또한 확장성을 고려한 개발 환경 구축하고, 사용자 경험 극대화를 지향합니다.
             <br />
             <div className={styles.contact}>
               <img
