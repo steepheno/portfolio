@@ -36,22 +36,21 @@ export default function MainPage() {
             <br />
             <br />
             또한 확장성을 고려하여 개발 환경을 구축하고, 사용자 경험 극대화를 지향합니다.
-            <br />
-            <div className={styles.contact}>
-              <img
-                src={Mail}
-                alt="이메일"
-              />
-              <p>rjs7289@naver.com</p>
-            </div>
-            <div className={styles.contact}>
-              <img
-                src={Github}
-                alt="깃허브"
-              />
-              <Link to={'https://github.com/steepheno'}>steepheno</Link>
-            </div>
           </p>
+          <div className={styles.contact}>
+            <img
+              src={Mail}
+              alt="이메일"
+            />
+            <p>rjs7289@naver.com</p>
+          </div>
+          <div className={styles.contact}>
+            <img
+              src={Github}
+              alt="깃허브"
+            />
+            <Link to={'https://github.com/steepheno'}>steepheno</Link>
+          </div>
           <div className={styles.heroCta}>
             <a
               href="#projects"
