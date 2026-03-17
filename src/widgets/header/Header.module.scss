@@ -26,7 +26,7 @@
 
 .navLogo {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   color: var(--text-primary);
@@ -44,7 +44,7 @@
 
   a {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 1rem;
     color: white;
     text-decoration: none;
     letter-spacing: 0.1em;
@@ -73,6 +73,10 @@
   }
 
   @media (max-width: 768px) {
-    display: none;
+    gap: 1.2rem;
+
+    a {
+      font-size: 0.85rem;
+    }
   }
 }

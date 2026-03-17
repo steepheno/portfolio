@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback } from 'react';
 import styles from './Header.module.scss';
+import { useEffect, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const NAV_LINKS = [
