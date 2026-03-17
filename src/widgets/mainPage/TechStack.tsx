@@ -11,6 +11,7 @@ import {
   SiTailwindcss,
   SiReactquery,
   SiAxios,
+  SiMysql,
   SiGit,
   SiVercel,
   SiJirasoftware,
@@ -53,7 +54,7 @@ const TECH_STACK: TechCategory[] = [
     ],
   },
   {
-    label: 'State & Data',
+    label: 'State & Database',
     items: [
       { name: 'Zustand', icon: '/icons/zustand.svg', color: '#433E38', primary: true },
       {
@@ -63,6 +64,7 @@ const TECH_STACK: TechCategory[] = [
         primary: true,
       },
       { name: 'Axios', icon: SiAxios, color: '#5A29E4' },
+      { name: 'MySQL', icon: SiMysql, color: '#00758F' },
     ],
   },
   {
