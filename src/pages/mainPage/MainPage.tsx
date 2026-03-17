@@ -2,7 +2,6 @@ import styles from './MainPage.module.scss';
 import Github from '@/shared/assets/github.png';
 import Mail from '@/shared/assets/mail.png';
 
-import Header from '@/widgets/header/Header';
 import TechStack from '@/widgets/mainPage/TechStack';
 import ProjectList from '@/widgets/mainPage/ProjectList';
 import { Link } from 'react-router-dom';
@@ -10,9 +9,6 @@ import { Link } from 'react-router-dom';
 export default function MainPage() {
   return (
     <>
-      {/* NAV */}
-      <Header />
-
       {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.heroGridBg} />
