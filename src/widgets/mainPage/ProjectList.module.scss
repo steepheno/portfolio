@@ -89,6 +89,7 @@
     background: linear-gradient(135deg, rgba(6, 182, 212, 0.04) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.5s ease;
+    pointer-events: none;
   }
 
   &:hover {

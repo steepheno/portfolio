@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
 import styles from './ProjectList.module.scss';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /* ── 데이터 ── */
 interface Project {
   number: string;
   title: string;
+  slug: string;
   description: string;
   tags: string[];
   image: string;
@@ -14,23 +16,33 @@ const PROJECTS: Project[] = [
   {
     number: 'PROJECT 01',
     title: 'Choice & Appear 쇼핑몰 제작 프로젝트',
+    slug: 'choice-and-appear',
     description: '사업자 등록 완료된 온라인 쇼핑몰로 운영될 웹 서비스',
     tags: ['React', 'TypeScript', 'Zustand', 'TanStack Query', 'SCSS Modules', 'FSD Architecture'],
-    image: '/images/cna.png',
+    image: '/images/cna/cna.png',
   },
   {
     number: 'PROJECT 02',
     title: 'DOROLAW',
+    slug: 'dorolaw',
     description: 'AI 기반 교통사고 과실 비율 분석 및 변호사 상담 매칭 플랫폼',
-    tags: ['React', 'TypeScript', 'TanStack Query', 'Zustand', 'Tailwind CSS'],
-    image: '/images/dorolaw.png',
+    tags: [
+      'React',
+      'TypeScript',
+      'TanStack Query',
+      'Zustand',
+      'Tailwind CSS',
+      'AI 분석 레포트 제공',
+    ],
+    image: '/images/dorolaw/dorolaw.png',
   },
   {
     number: 'PROJECT 03',
     title: 'DevPilot',
+    slug: 'devpilot',
     description: '1인 개발자 및 CI/CD 초보자들을 위한 파이프라인 구축 및 배포 자동화 서비스',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Dashboard'],
-    image: '/images/devpilot.png',
+    image: '/images/devpilot/devpilot.png',
   },
 ];
 
@@ -78,6 +90,7 @@ function SectionHeader({ number, title }: { number: string; title: string }) {
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>(0.1, index * 120);
+  const navigate = useNavigate();
 
   const cardClass = [
     styles.projectCard,
@@ -91,6 +104,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     <div
       ref={ref}
       className={cardClass}
+      onClick={() => navigate(`/projects/${project.slug}`)}
     >
       <div className={styles.projectPreview}>
         <div className={styles.previewPlaceholder}>
