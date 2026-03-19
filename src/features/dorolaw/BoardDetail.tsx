@@ -12,12 +12,12 @@ export default function BoardDetail() {
           갱신이 이루어지지 않았습니다.
         </li>
         <li>
-          게시글 등록 API가 Tanstack-Query 캐시와 연결되지 않아, 게시글 등록 성공 후 캐시 무효화가
-          이루어지지 않았습니다.
+          게시글 CRUD API 연결 도중 Tanstack-Query 캐시와 연결되지 않아, 게시글 등록 성공 후 캐시
+          무효화가 이루어지지 않았습니다.
         </li>
         <li>
-          이로 인해 새로운 글이 게시되어도 수동 새로고침 없이는{' '}
-          <strong>게시판 목록에 반영되지 않는 문제</strong>가 있었습니다.
+          이로 인해 새로운 글이 게시되어도{' '}
+          <strong>수동 새로고침 없이 게시판 목록에 반영되지 않는 문제</strong>가 있었습니다.
         </li>
       </div>
 
@@ -25,26 +25,27 @@ export default function BoardDetail() {
       <h3 className={styles.title}>2) 문제 해결 및 성과</h3>
       <div className={styles.solutionRow}>
         <SourceCodeCard
-          fileName="useUploadStore.ts"
-          imageSrc="/images/dorolaw/useUploadStore.png"
+          fileName="queries.ts"
+          imageSrc="/images/dorolaw/queries.png"
         />
         <div className={styles.description}>
           <li>
-            Zustand 전역 스토어 useUploadStore를 도입하여 사용자가 입력한 데이터를{' '}
-            <strong>중앙 관리</strong>하도록 재설계하였습니다.
+            <strong>staleTime = 0</strong>으로 설정하여 데이터를 즉시 stale 상태로 마킹하고,
+            refetchInterval을 30초로 설정하였습니다.
           </li>
           <li>
-            스토어의 복합 액션에서 <strong>MIME 타입 검증</strong>을 수행하도록 구현하여, video
-            타입이 아닌 경우 사용자에게 알리도록 하였습니다.
+            게시글 등록 API를 useMutation으로 전환하고, onSuccess 콜백에서{' '}
+            <strong>invalidateQueries를 호출</strong>하여 캐시 무효화를 연결했습니다.
           </li>
           <li>
-            데이터 입력 컴포넌트와 분석 요청 버튼 컴포넌트가 동일한 스토어를 참조하게 되어{' '}
-            <strong style={{ color: '#22d3ee' }}>props drilling 없는 데이터 흐름을 구현</strong>
-            했습니다.
+            이를 통해 페이지 복귀, 탭 전환, 네트워크 재연결된 경우와 더불어{' '}
+            <strong style={{ color: '#22d3ee' }}>30초 주기 자동 갱신</strong>이 이루어지도록
+            개선했습니다.
           </li>
           <li>
-            영상 파일 업로드 실패 시 게시글 관련 데이터를 저장하지 않도록 복합 액션을 구현하여,{' '}
-            <strong style={{ color: '#22d3ee' }}>영상 없는 게시글 생성 문제를 방지</strong>했습니다.
+            또한 페이지 전환 시 이전 데이터를 유지하도록 placeholderData에 keepPreviousData를
+            적용하여 <strong style={{ color: '#22d3ee' }}>깜박임 없는 페이지네이션</strong>을
+            구현했습니다.
           </li>
         </div>
       </div>
