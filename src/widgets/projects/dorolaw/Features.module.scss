@@ -116,18 +116,6 @@ $font-mono: 'JetBrains Mono', monospace;
   padding: 32px;
 }
 
-.featureCardIcon {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: $accent-dim;
-  border-radius: 10px;
-  margin-bottom: 18px;
-  font-size: 20px;
-}
-
 .featureCardTitle {
   font-size: x-large;
   font-weight: 700;
