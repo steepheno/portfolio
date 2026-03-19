@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+// ===== VARIABLES =====
+$accent: #f0c808;
+$accent-dim: rgba(240, 200, 8, 0.12);
+$text-primary: #f0ece4;
+$text-secondary: #8a8a95;
+$text-muted: #55555f;
+
+$font-display: 'Bebas Neue', sans-serif;
+$font-body: 'Noto Sans KR', sans-serif;
+$font-mono: 'JetBrains Mono', monospace;
+
+// ===== HERO =====
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 40px;
+  overflow: hidden;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid $accent;
+  border-radius: 100px;
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: $accent;
+    border-radius: 50%;
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+}
+
+.heroProjectLabel {
+  font-family: $font-display;
+  font-size: clamp(64px, 10vw, 140px);
+  letter-spacing: 6px;
+  line-height: 0.95;
+  color: $text-primary;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+
+  span {
+    display: block;
+    background: linear-gradient(135deg, $accent 0%, #ffd84d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.heroTagline {
+  margin-top: 32px;
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 300;
+  color: silver;
+  line-height: 1.8;
+  letter-spacing: -0.3px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+
+  em {
+    font-style: normal;
+    color: $text-primary;
+    font-weight: 500;
+  }
+}
+
+.heroQuote {
+  margin: 40px 0;
+  padding: 24px 40px;
+  border-left: 3px solid $accent;
+  background: rgba(240, 200, 8, 0.3);
+  border-radius: 0 12px 12px 0;
+  font-size: clamp(15px, 1.8vw, 19px);
+  color: white;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.heroScrollCue {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1.2s;
+
+  span {
+    font-family: $font-mono;
+    font-size: small;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+  }
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, $accent, transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+// ===== KEYFRAMES =====
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: 900px) {
+  .hero {
+    padding: 60px 20px;
+  }
+  .heroQuote {
+    padding: 20px 24px;
+  }
+}
