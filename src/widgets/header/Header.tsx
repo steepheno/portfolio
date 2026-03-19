@@ -13,6 +13,10 @@ export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const goToHome = () => {
+    navigate('/');
+  };
+
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 80);
   }, []);
@@ -48,7 +52,10 @@ export default function Header() {
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
-      <div className={styles.navLogo}>
+      <div
+        className={styles.navLogo}
+        onClick={goToHome}
+      >
         <span>&lt;</span> JS.dev <span>/&gt;</span>
       </div>
       <ul className={styles.navLinks}>
