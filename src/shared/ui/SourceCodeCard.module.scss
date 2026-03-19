@@ -1,0 +1,124 @@
+// ===== VARIABLES =====
+$bg-card: #16161a;
+$text-muted: #55555f;
+$text-secondary: #8a8a95;
+$accent: #f0c808;
+$danger: #e84545;
+$success: #2dcc70;
+$border: rgba(255, 255, 255, 0.06);
+$font-mono: 'JetBrains Mono', monospace;
+
+// ===== CARD =====
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid $border;
+  background: $bg-card;
+  transition: all 0.3s ease;
+  max-width: 546px;
+  width: 100%;
+
+  &:hover {
+    border-color: rgba(240, 200, 8, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+  }
+}
+
+// ===== TITLE BAR =====
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #1c1c22;
+  border-bottom: 1px solid $border;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+
+  &:nth-child(1) {
+    background: $danger;
+  }
+  &:nth-child(2) {
+    background: $accent;
+  }
+  &:nth-child(3) {
+    background: $success;
+  }
+}
+
+.filename {
+  margin-left: 10px;
+  font-family: $font-mono;
+  font-size: 12px;
+  color: silver;
+}
+
+// ===== MEDIA =====
+.media {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  background: #0d1117;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: $text-muted;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 24px,
+      rgba(255, 255, 255, 0.02) 24px,
+      rgba(255, 255, 255, 0.02) 25px
+    ),
+    #0d1117;
+}
+
+.placeholderIcon {
+  font-size: 28px;
+  opacity: 0.3;
+}
+
+.placeholderText {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.4;
+}
+
+// ===== CAPTION =====
+.caption {
+  padding: 16px 20px;
+  border-top: 1px solid $border;
+}
+
+.captionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.captionDesc {
+  font-size: 12px;
+  color: $text-secondary;
+  font-weight: 300;
+  line-height: 1.5;
+}
