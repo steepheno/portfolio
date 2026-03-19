@@ -32,7 +32,7 @@ $font-mono: 'JetBrains Mono', monospace;
   gap: 8px;
   padding: 12px 16px;
   background: #1c1c22;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid silver;
 }
 
 .dot {
@@ -102,23 +102,4 @@ $font-mono: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 1px;
   opacity: 0.4;
-}
-
-// ===== CAPTION =====
-.caption {
-  padding: 16px 20px;
-  border-top: 1px solid $border;
-}
-
-.captionTitle {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.captionDesc {
-  font-size: 12px;
-  color: $text-secondary;
-  font-weight: 300;
-  line-height: 1.5;
 }
