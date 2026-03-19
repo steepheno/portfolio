@@ -87,11 +87,19 @@ export default function DoroLaw() {
         />
 
         <li>
-          교통사고 영상 업로드 후 약 20초가 지나면 AI가 분석한 과실 비율 결과를 확인할 수 있습니다.
+          교통사고 영상 업로드 후 약 <strong>20초</strong>가 지나면{' '}
+          <strong>AI가 분석한 과실 비율 결과를 확인</strong>할 수 있습니다.
         </li>
         <li>
-          AI 분석 결과를 PDF 파일 형태의 레포트로 저장할 수 있어 사용자의 인터넷 환경과 무관하게
-          레포트 확인이 가능합니다.
+          다른 사용자의 분석 결과를 참고하여{' '}
+          <strong style={{ color: 'goldenrod' }}>
+            본인의 사고와 유사한 사례의 결과도 함께 확인
+          </strong>
+          할 수 있습니다.
+        </li>
+        <li>
+          AI 분석 결과를 PDF 레포트로 저장할 수 있어{' '}
+          <strong style={{ color: 'goldenrod' }}>언제 어디서나 레포트 확인이 가능</strong>합니다.
         </li>
       </div>
 
