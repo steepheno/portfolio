@@ -30,7 +30,7 @@ const FEATURES: FeatureItem[] = [
     desc: (
       <>
         게시글 제목, 영상 첨부 상태, Drag & Drop 여부를{' '}
-        <strong className={styles.highlight}>전역 스토어</strong>로 관리하도록 구현했습니다.
+        <strong className={styles.highlight}>전역 스토어로 관리</strong>하도록 구현했습니다.
       </>
     ),
     detail: <AiAnalysisDetail />,
@@ -47,8 +47,9 @@ const FEATURES: FeatureItem[] = [
     title: '02. 게시판 구현',
     desc: (
       <>
-        Tanstack-Query의 캐시 무효화 및 자동 갱신 기능을 통해 게시글 데이터의{' '}
-        <strong className={styles.highlight}>최신 상태 동기화</strong>를 구현했습니다.
+        Tanstack-Query의 캐시 무효화 및 자동 갱신 기능을 통해{' '}
+        <strong className={styles.highlight}>게시글 데이터의 최신 상태 동기화</strong>를
+        구현했습니다.
       </>
     ),
     detail: <BoardDetail />,
@@ -65,8 +66,8 @@ const FEATURES: FeatureItem[] = [
     title: '03. AI 분석 레포트 저장',
     desc: (
       <>
-        AI 분석 결과 내용을 <strong className={styles.highlight}>PDF 파일로 저장</strong>할 수 있어
-        언제 어디서나 쉽게 확인할 수 있습니다.
+        react-to-pdf 라이브러리를 활용하여 분석 레포트 컴포넌트를{' '}
+        <strong className={styles.highlight}>PDF 파일로 저장</strong>하는 기능을 구현했습니다.
       </>
     ),
     detail: <SavePdfDetail />,
