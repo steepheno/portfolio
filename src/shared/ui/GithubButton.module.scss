@@ -1,0 +1,30 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 130px;
+  height: 48px;
+  color: #fff;
+  border: 1.2px solid #f0c808;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+
+  &:hover {
+    border-color: #ffd84d;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  &:active {
+    background: #222;
+  }
+}
