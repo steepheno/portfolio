@@ -17,10 +17,10 @@ interface CodeItem {
 interface FeatureItem {
   icon: string;
   title: string;
-  desc: string;
-  mediaLabel: string;
+  desc: string | ReactNode;
   detail: ReactNode;
-  // mediaSrc?: string;
+  imgSrc?: string;
+  mediaSrc?: string;
   codeItems?: CodeItem[];
 }
 
@@ -28,10 +28,10 @@ interface FeatureItem {
 const FEATURES: FeatureItem[] = [
   {
     icon: '🎥',
-    title: 'AI 과실비율 분석',
-    desc: '블랙박스/CCTV 영상을 업로드하면 AI 모델이 사고 상황을 분석하고 과실비율을 자동으로 산출합니다.',
-    mediaLabel: 'GIF · 영상 업로드 → AI 분석 흐름',
+    title: '01. AI 과실비율 분석',
+    desc: '블랙박스 영상을 업로드하면 AI 모델이 사고 상황 분석 결과와 과실 비율을 알려드립니다.',
     detail: <AiAnalysisDetail />,
+    mediaSrc: '/images/dorolaw/analysis.mp4',
     codeItems: [
       {
         filename: 'axiosInstance.js',
@@ -42,10 +42,16 @@ const FEATURES: FeatureItem[] = [
   },
   {
     icon: '📊',
-    title: '분석 게시판 구현',
-    desc: 'AI 분석 결과를 게시판에서 공유하고, 법률상담 게시판에서 다른 사용자와 경험을 나눌 수 있습니다.',
-    mediaLabel: 'GIF · 게시판 CRUD & 검색',
+    title: '02. 게시판 구현',
+    desc: (
+      <>
+        <strong className={styles.highlight}>AI 분석 게시판</strong>,{' '}
+        <strong className={styles.highlight}>법률 상담 게시판</strong> 2종류가 있어 다른 사용자의
+        분석 결과와 상담 내용을 함께 확인할 수 있습니다.
+      </>
+    ),
     detail: <BoardDetail />,
+    imgSrc: '/images/dorolaw/board.png',
     codeItems: [
       {
         filename: 'router/guard.js',
@@ -56,10 +62,15 @@ const FEATURES: FeatureItem[] = [
   },
   {
     icon: '🔔',
-    title: 'AI 분석 레포트 PDF 저장',
-    desc: 'FCM 기반 푸시 알림으로 분석 완료, 상담 예약 확정 등 주요 이벤트를 실시간으로 전달합니다.',
-    mediaLabel: 'GIF · FCM 푸시 알림 동작',
+    title: '03. AI 분석 레포트 저장',
+    desc: (
+      <>
+        AI 분석 결과 내용을 <strong className={styles.highlight}>PDF 파일로 저장</strong>할 수 있어
+        언제 어디서나 쉽게 확인할 수 있습니다.
+      </>
+    ),
     detail: <SavePdf />,
+    mediaSrc: '/images/dorolaw/report.mp4',
     codeItems: [
       {
         filename: 'firebase-messaging.js',
@@ -69,16 +80,6 @@ const FEATURES: FeatureItem[] = [
     ],
   },
 ];
-
-// ===== Sub Components =====
-function MediaPlaceholder({ icon, label }: { icon: string; label: string }) {
-  return (
-    <div className={styles.featureCardMediaPlaceholder}>
-      <div className={styles.placeholderIcon}>{icon}</div>
-      <span className={styles.placeholderText}>{label}</span>
-    </div>
-  );
-}
 
 // ===== Main =====
 export default function Features() {
@@ -111,12 +112,17 @@ export default function Features() {
 
               {/* 기능 동작 이미지 */}
               <div className={styles.featureCardMedia}>
-                {/* 이미지가 준비되면 아래 주석을 해제하고 mediaSrc 필드를 활성화하세요 */}
-                {/* <img src={feature.mediaSrc} alt={`${feature.title} 데모`} /> */}
-                <MediaPlaceholder
-                  icon={feature.icon}
-                  label={feature.mediaLabel}
-                />
+                {feature.mediaSrc ? (
+                  <video
+                    src={feature.mediaSrc}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img src={feature.imgSrc} />
+                )}
               </div>
 
               {/* 구현 과정 */}
