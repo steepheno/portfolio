@@ -12,7 +12,7 @@ export default function BoardDetail() {
           갱신이 이루어지지 않았습니다.
         </li>
         <li>
-          게시글 CRUD API 연결 도중 Tanstack-Query 캐시와 연결되지 않아, 게시글 등록 성공 후 캐시
+          초기 게시글 CRUD API가 Tanstack-Query 캐시와 연결되지 않아, 게시글 등록 성공 후 캐시
           무효화가 이루어지지 않았습니다.
         </li>
         <li>
