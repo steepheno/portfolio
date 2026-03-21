@@ -7,20 +7,12 @@ import BoardDetail from '@/features/dorolaw/BoardDetail';
 import SavePdfDetail from '@/features/dorolaw/SavePdfDetail';
 
 // ===== Types =====
-interface CodeItem {
-  filename: string;
-  title: string;
-  desc: string;
-  imageSrc?: string;
-}
-
 interface FeatureItem {
   title: string;
   desc: ReactNode;
   detail: ReactNode;
   imgSrc?: string;
   mediaSrc?: string;
-  codeItems?: CodeItem[];
 }
 
 // ===== Data =====
@@ -35,13 +27,6 @@ const FEATURES: FeatureItem[] = [
     ),
     detail: <AiAnalysisDetail />,
     mediaSrc: '/images/dorolaw/analysis.mp4',
-    codeItems: [
-      {
-        filename: 'axiosInstance.js',
-        title: 'Axios Interceptor — 토큰 자동 갱신',
-        desc: '401 응답 시 Refresh Token으로 Access Token을 자동 갱신하고, _retry 플래그로 무한 루프를 방지하는 방어적 코딩',
-      },
-    ],
   },
   {
     title: '02. 게시판 구현',
@@ -54,13 +39,6 @@ const FEATURES: FeatureItem[] = [
     ),
     detail: <BoardDetail />,
     imgSrc: '/images/dorolaw/board.png',
-    codeItems: [
-      {
-        filename: 'router/guard.js',
-        title: 'Route Guard — 인증 기반 라우팅',
-        desc: '인증 상태에 따라 접근을 제어하고, 미인증 사용자를 로그인 페이지로 리다이렉트하는 네비게이션 가드',
-      },
-    ],
   },
   {
     title: '03. AI 분석 레포트 저장',
@@ -72,13 +50,6 @@ const FEATURES: FeatureItem[] = [
     ),
     detail: <SavePdfDetail />,
     mediaSrc: '/images/dorolaw/report.mp4',
-    codeItems: [
-      {
-        filename: 'firebase-messaging.js',
-        title: 'FCM Push Notification — 실시간 알림',
-        desc: 'Firebase Cloud Messaging을 활용한 푸시 알림 초기화 및 토큰 등록, 포그라운드 메시지 수신 처리',
-      },
-    ],
   },
 ];
 
