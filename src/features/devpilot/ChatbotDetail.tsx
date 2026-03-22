@@ -12,8 +12,9 @@ export default function ChatbotDetail() {
           구분했습니다.
         </li>
         <li>
-          message.map( )으로 배열을 순회하며 isBot 값에 따라 봇 메시지는 회색 좌측 정렬, 사용자
-          메시지는 파란색 우측 정렬을 적용했습니다.
+          message.map( )으로 배열을 순회하며 isBot 값에 따라{' '}
+          <strong>봇 메시지는 회색 좌측 정렬</strong>,{' '}
+          <strong>사용자 메시지는 파란색 우측 정렬</strong>을 적용했습니다.
         </li>
         <li>
           메시지가 여러 줄로 입력되면 textarea가 채팅창 전체 영역을 벗어나{' '}
