@@ -107,17 +107,18 @@ export default function DevPilot() {
           </div>
           <div className={styles.archDetail}>
             <li>
-              배포 서버는 AWS EC2 2개로, 영상 분석용 AI 서버와 게시판 및 변호사 매칭 기능을 담당하는
-              백엔드 서버가 있습니다.
-            </li>
-            <li>외부 서비스로는 카카오 소셜로그인, FCM 알림 기능이 있습니다.</li>
-            <li>
-              Database는 CRUD가 잦은 게시판 및 상담 매칭 기능의 특성에 맞는 MySQL을 선택하였습니다.
+              DevPilot은 사용자의 EC2에 Jenkins를 설치하여, 사용자로부터 입력받은 정보와 Jenkins
+              API를 통해 파이프라인 구축을 돕습니다.
             </li>
             <li>
-              Nginx는 들어온 요청을 처리 가능한 내부 서비스로 전달하는 리버스 프록시 역할을
-              수행합니다.
+              결과적으로 EC2에는 Spring, React, Nginx, Redis나 MySQL로 개발된 내용이 각각 컨테이너로
+              빌드됩니다.
             </li>
+            <li>
+              Wails 부분은 Desktop 애플리케이션 환경에서 React와 Spring이 요청을 주고받는
+              부분입니다.
+            </li>
+            <li>FastAPI는 AI 챗봇 서버 구축에 사용되었습니다.</li>
           </div>
         </div>
       </section>
