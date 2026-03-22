@@ -4,7 +4,7 @@ import MainPage from '@/pages/mainPage/MainPage';
 import Resume from '@/pages/resume/Resume';
 import DoroLaw from '@/pages/projects/dorolaw/DoroLaw';
 import ChoiceAndAppear from '@/pages/projects/ChoiceAndAppear';
-import DevPilot from '@/pages/projects/DevPilot';
+import DevPilot from '@/pages/projects/devpilot/DevPilot';
 
 export const router = createBrowserRouter([
   {
