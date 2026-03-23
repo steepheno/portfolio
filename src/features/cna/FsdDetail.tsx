@@ -16,7 +16,7 @@ export default function FsdDetail() {
         </li>
         <li>
           또한 로그인/회원가입은 '인증' 도메인에 속하지만, 독립적인 페이지와 API를 가지므로{' '}
-          <strong>하나의 슬라이스로 묶기에는 결합도가 낮다</strong>고 판단했습니다.
+          <strong>하나의 슬라이스로 묶기에는 응집도가 낮다</strong>고 판단했습니다.
         </li>
       </div>
 
