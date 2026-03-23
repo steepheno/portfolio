@@ -1,0 +1,87 @@
+/* ── 하단 컨텐츠 ── */
+.contents {
+  columns: 2;
+  column-gap: 36px;
+}
+
+.section {
+  break-inside: avoid;
+  margin-bottom: 36px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  gap: 16px;
+}
+
+.entry {
+  display: flex;
+  gap: 24px;
+}
+
+.entryPeriod {
+  min-width: 100px;
+  font-size: 14px;
+  color: #777;
+  padding-top: 2px;
+}
+
+.entryDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  strong {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+  }
+
+  span {
+    font-size: 14px;
+    color: #555;
+  }
+}
+
+.eduDetail {
+  margin-bottom: 20px;
+  font-size: small;
+  color: black;
+
+  .link {
+    font-weight: bold;
+  }
+}
+
+.actDetail {
+  margin: 20px 0px;
+  font-size: small;
+  color: black;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .contents {
+    columns: 1;
+  }
+
+  .entry {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .entryPeriod {
+    min-width: unset;
+  }
+}
