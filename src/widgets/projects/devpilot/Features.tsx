@@ -21,7 +21,7 @@ const FEATURES: FeatureItem[] = [
     desc: (
       <>
         프로젝트별 가장 최근에 실행된 빌드 결과를{' '}
-        <strong className={styles.highlight}>Jenkins와 유사한 UI</strong>로 구현했습니다.{' '}
+        <strong className={styles.highlight}>Jenkins GUI와 유사</strong>하게 구현했습니다.{' '}
       </>
     ),
     detail: <DashboardDetail />,
