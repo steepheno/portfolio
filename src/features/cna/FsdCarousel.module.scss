@@ -1,0 +1,216 @@
+// ===== VARIABLES (Features.module.scss와 동일 체계) =====
+$bg-secondary: #111114;
+$bg-card: #16161a;
+$text-primary: #f0ece4;
+$text-secondary: #8a8a95;
+$text-muted: #55555f;
+$accent: #f0c808;
+$accent-dim: rgba(240, 200, 8, 0.12);
+$border: rgba(255, 255, 255, 0.06);
+$font-mono: 'JetBrains Mono', monospace;
+
+// ===== CAROUSEL =====
+.carousel {
+  width: 100%;
+}
+
+// ===== 슬라이드 컨테이너 =====
+.slideContainer {
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
+  min-height: 380px;
+}
+
+// ===== 이미지 영역 =====
+.imageSection {
+  flex: 1;
+  max-height: 420px;
+  border-radius: 12px;
+  overflow-y: auto;
+  background: $bg-secondary;
+  border: 1px solid $border;
+  animation: fadeIn 0.3s ease-out;
+
+  // 스크롤바 스타일
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $text-muted;
+    border-radius: 4px;
+  }
+}
+
+.layerImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 1rem;
+}
+
+// ===== 설명 영역 =====
+.descriptionSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.layerName {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: $accent;
+  letter-spacing: -0.3px;
+}
+
+.layerDescription {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.detailList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.detailItem {
+  font-size: 0.9rem;
+  color: $text-primary;
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.6;
+  font-weight: 300;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: $accent;
+  }
+}
+
+// ===== 네비게이션 =====
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+// 화살표 버튼
+.arrowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid $border;
+  background: transparent;
+  color: $text-secondary;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover:not(.disabled) {
+    border-color: $accent;
+    color: $accent;
+  }
+
+  &.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+}
+
+// dot 컨테이너
+.dotContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+// 개별 dot
+.dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dotCircle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $text-muted;
+  transition: all 0.25s ease;
+
+  .active & {
+    background-color: $accent;
+    box-shadow: 0 0 8px $accent-dim;
+    transform: scale(1.4);
+  }
+
+  .dot:hover:not(.active) & {
+    background-color: $text-secondary;
+  }
+}
+
+// ===== 애니메이션 =====
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ===== 반응형 =====
+@media (max-width: 768px) {
+  .slideContainer {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .imageSection {
+    min-height: 260px;
+  }
+
+  .layerName {
+    font-size: 1.4rem;
+  }
+
+  .dotLabel {
+    display: none;
+  }
+}

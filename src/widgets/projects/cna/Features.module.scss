@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+// ===== VARIABLES =====
+$bg-secondary: #111114;
+$bg-card: #16161a;
+$text-primary: #f0ece4;
+$text-secondary: #8a8a95;
+$text-muted: #55555f;
+$accent: #f0c808;
+$accent-dim: rgba(240, 200, 8, 0.12);
+$border: rgba(255, 255, 255, 0.06);
+$font-mono: 'JetBrains Mono', monospace;
+
+// ===== SHARED =====
+.section {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  font-family: $font-mono;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 48px;
+  letter-spacing: -1px;
+}
+
+// ===== REVEAL =====
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ===== FEATURES GRID =====
+.featuresGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// ===== FEATURE CARD =====
+.featureCard {
+  position: relative;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $accent, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+
+  &:hover {
+    border-color: rgba(240, 200, 8, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.featureCardMedia {
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: $bg-secondary;
+  overflow: hidden;
+  border-bottom: 1px solid $border;
+
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.carouselMedia {
+  aspect-ratio: unset;
+  overflow: visible;
+  padding: 24px 32px;
+
+  // featureCardMedia의 img, video 스타일이 캐러셀 내부 img에도 먹히는 걸 방지
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.featureCardBody {
+  padding: 32px;
+}
+
+.featureCardTitle {
+  font-size: x-large;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.featureCardDesc {
+  font-size: large;
+  line-height: 1.8;
+  color: white;
+  font-weight: 300;
+}
+
+.highlight {
+  font-weight: bold;
+  color: $accent;
+}
+
+// 구현 과정
+.detail {
+  margin: 32px;
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: 900px) {
+  .section {
+    padding: 60px 20px;
+  }
+}
