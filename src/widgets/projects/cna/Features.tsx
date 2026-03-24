@@ -11,8 +11,8 @@ interface FeatureItem {
   title: string;
   desc: ReactNode;
   detail: ReactNode;
-  media: ReactNode;
-  fullMedia?: boolean;  // true이면 aspect-ratio 해제, 내부 스크롤 허용
+  mediaSrc: ReactNode;
+  fullMedia?: boolean; // true이면 aspect-ratio 해제, 내부 스크롤 허용
 }
 
 // ===== Data =====
@@ -26,23 +26,21 @@ const FEATURES: FeatureItem[] = [
       </>
     ),
     detail: <FsdDetail />,
-    media: <FsdCarousel />,
+    mediaSrc: <FsdCarousel />,
     fullMedia: true,
   },
   {
     title: '02. 인증 아키텍처 구현',
     desc: (
       <>
-        쿠키 기반 인증 아키텍처를 통해{' '}
-        <strong className={styles.highlight}>XSS, CSRF 공격에 대응</strong> 가능한 로그인 환경을
-        구현했습니다.
+        쿠키 기반 인증 아키텍처를 통해 <strong className={styles.highlight}>XSS 공격에 대응</strong>{' '}
+        가능한 로그인 환경을 구현했습니다.
       </>
     ),
     detail: <AuthDetail />,
-    // 이미지, 비디오, 캐러셀 등 자유롭게 지정
-    media: (
+    mediaSrc: (
       <video
-        src="/videos/cna/auth-demo.mp4"
+        src="/images/cna/cna_login.mp4"
         autoPlay
         loop
         muted
@@ -83,7 +81,7 @@ export default function Features() {
               <div
                 className={`${styles.featureCardMedia} ${feature.fullMedia ? styles.fullMedia : ''}`}
               >
-                {feature.media}
+                {feature.mediaSrc}
               </div>
 
               {/* 구현 과정 */}
