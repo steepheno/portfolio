@@ -86,24 +86,17 @@ export default function ChoiceAndAppear() {
         />
 
         <li>
-          교통사고 영상 업로드 후 약 <strong>20초</strong>가 지나면{' '}
-          <strong>AI가 분석한 과실 비율 결과를 확인</strong>할 수 있습니다.
+          FSD 아키텍처를 적용하여 <strong>기능별 유지보수 및 확장에 유리</strong>한 폴더구조를
+          구축했습니다.
         </li>
         <li>
-          다른 사용자의 분석 결과를 참고하여{' '}
-          <strong style={{ color: 'goldenrod' }}>
-            본인의 사고와 유사한 사례의 결과도 함께 확인
-          </strong>
-          할 수 있습니다.
-        </li>
-        <li>
-          AI 분석 결과를 PDF 레포트로 저장할 수 있어{' '}
-          <strong style={{ color: 'goldenrod' }}>언제 어디서나 레포트 확인이 가능</strong>합니다.
+          서비스 이용자에게 안전하고 편리한 로그인 환경을 제공하여{' '}
+          <strong>보안 안전성과 사용자 경험을 높였</strong>습니다.
         </li>
       </div>
 
       {/* ===== ARCHITECTURE ===== */}
-      <section className={styles.section}>
+      {/* <section className={styles.section}>
         <SectionHeader
           label="04 — Architecture"
           title="프로젝트 아키텍처"
@@ -130,7 +123,7 @@ export default function ChoiceAndAppear() {
             </li>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
