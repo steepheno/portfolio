@@ -3,7 +3,6 @@
 }
 
 .description {
-  margin-top: 20px;
   padding-left: 18px;
   padding-bottom: 40px;
 
@@ -20,7 +19,7 @@
 .solutionRow {
   display: flex;
   gap: 24px;
-  align-items: flex-start;
+  align-items: center;
 
   @media (max-width: 768px) {
     flex-direction: column;
