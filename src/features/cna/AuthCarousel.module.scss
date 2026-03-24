@@ -1,0 +1,118 @@
+// ===== VARIABLES =====
+$bg-secondary: #111114;
+$text-primary: #f0ece4;
+$text-muted: #55555f;
+$accent: #f0c808;
+$accent-light: #93c5fd;
+$border: rgba(255, 255, 255, 0.06);
+
+// ===== 슬라이드 컨테이너 =====
+.slideContainer {
+  display: flex;
+  margin-top: 30px;
+  align-items: stretch;
+  gap: 2rem;
+  min-height: 380px;
+}
+
+// ===== 이미지 영역 =====
+.imageSection {
+  flex: 1;
+  max-height: 420px;
+  align-self: flex-start;
+  border-radius: 10px;
+  overflow-y: auto;
+  background: $bg-secondary;
+  border: 1px solid $border;
+
+  // 스크롤바 스타일
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $text-muted;
+    border-radius: 4px;
+  }
+}
+
+.layerImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 1rem;
+}
+
+// ===== 설명 영역 =====
+.descriptionSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.layerName {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: $accent-light;
+  letter-spacing: -0.3px;
+}
+
+.layerDescription {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.detailList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+  li {
+    font-size: 0.9rem;
+    color: $text-primary;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+    font-weight: 300;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $accent;
+    }
+  }
+}
+
+// ===== 반응형 =====
+@media (max-width: 768px) {
+  .slideContainer {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .imageSection {
+    height: 300px;
+    min-height: auto;
+  }
+
+  .layerName {
+    font-size: 1.4rem;
+  }
+}

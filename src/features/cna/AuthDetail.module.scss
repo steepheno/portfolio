@@ -6,7 +6,6 @@ $accent: #f0c808;
 }
 
 .description {
-  margin-top: 30px;
   padding: 0px 18px;
   padding-bottom: 40px;
 
@@ -20,15 +19,15 @@ $accent: #f0c808;
   }
 
   img {
-    margin-top: 20px;
     width: 90%;
   }
 }
 
 .solutionRow {
   display: flex;
+  margin-top: 30px;
   gap: 24px;
-  align-items: flex-start;
+  align-items: center;
 
   @media (max-width: 768px) {
     flex-direction: column;
