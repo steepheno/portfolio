@@ -1,0 +1,104 @@
+// ===== VARIABLES =====
+$text-secondary: #8a8a95;
+$text-muted: #55555f;
+$accent: #f0c808;
+$accent-dim: rgba(240, 200, 8, 0.12);
+$border: rgba(255, 255, 255, 0.06);
+
+// ===== CAROUSEL =====
+.carousel {
+  width: 100%;
+}
+
+// ===== 슬라이드 래퍼 (fade-in 애니메이션 적용 단위) =====
+.slideWrapper {
+  min-height: 0;
+  overflow: visible;
+  animation: fadeIn 0.3s ease-out;
+}
+
+// ===== 네비게이션 =====
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+// 화살표 버튼
+.arrowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid $border;
+  background: transparent;
+  color: $text-secondary;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover:not(.disabled) {
+    border-color: $accent;
+    color: $accent;
+  }
+
+  &.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+}
+
+// dot 컨테이너
+.dotContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+// 개별 dot
+.dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dotCircle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $text-muted;
+  transition: all 0.25s ease;
+
+  .active & {
+    background-color: $accent;
+    box-shadow: 0 0 8px $accent-dim;
+    transform: scale(1.4);
+  }
+
+  .dot:hover:not(.active) & {
+    background-color: $text-secondary;
+  }
+}
+
+// ===== 애니메이션 =====
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

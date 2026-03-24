@@ -1,9 +1,8 @@
-import { useState, useCallback } from 'react';
 import styles from './FsdCarousel.module.scss';
+import Carousel from '@/shared/ui/Carousel';
 
 /* ── 레이어 데이터 ── */
 interface FsdLayer {
-  name: string;
   label: string;
   description: string;
   details: string[];
@@ -12,7 +11,6 @@ interface FsdLayer {
 
 const FSD_LAYERS: FsdLayer[] = [
   {
-    name: 'app',
     label: 'App',
     description: '애플리케이션 진입점 및 전역 설정',
     details: [
@@ -23,7 +21,6 @@ const FSD_LAYERS: FsdLayer[] = [
     image: '/images/cna/fsd/app.png',
   },
   {
-    name: 'pages',
     label: 'Pages',
     description: '페이지 단위 라우팅을 담당하는 최상위 컴포넌트',
     details: [
@@ -35,7 +32,6 @@ const FSD_LAYERS: FsdLayer[] = [
     image: '/images/cna/fsd/pages.png',
   },
   {
-    name: 'widgets',
     label: 'Widgets',
     description: 'features의 조합으로서 재사용되는 복합 UI 블록',
     details: [
@@ -47,7 +43,6 @@ const FSD_LAYERS: FsdLayer[] = [
     image: '/images/cna/fsd/widgets.png',
   },
   {
-    name: 'features',
     label: 'Features',
     description: '독립된 하나의 기능',
     details: [
@@ -58,7 +53,6 @@ const FSD_LAYERS: FsdLayer[] = [
     image: '/images/cna/fsd/features.png',
   },
   {
-    name: 'entities',
     label: 'Entities',
     description: '비즈니스 도메인의 핵심 데이터 모델',
     details: [
@@ -69,7 +63,6 @@ const FSD_LAYERS: FsdLayer[] = [
     image: '/images/cna/fsd/entities.png',
   },
   {
-    name: 'shared',
     label: 'Shared',
     description: '도메인과 무관한 공통 인프라 요소',
     details: [
@@ -84,91 +77,35 @@ const FSD_LAYERS: FsdLayer[] = [
 
 /* ── 컴포넌트 ── */
 export default function FsdCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const currentLayer = FSD_LAYERS[currentIndex];
-
-  const goTo = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
-
-  const goNext = useCallback(() => {
-    setCurrentIndex(prev => Math.min(prev + 1, FSD_LAYERS.length - 1));
-  }, []);
-
-  const goPrev = useCallback(() => {
-    setCurrentIndex(prev => Math.max(prev - 1, 0));
-  }, []);
-
   return (
-    <div className={styles.carousel}>
-      {/* 슬라이드 영역 */}
-      <div className={styles.slideContainer}>
-        {/* 이미지 */}
-        <div
-          className={styles.imageSection}
-          key={currentIndex}
-        >
-          <img
-            src={currentLayer.image}
-            alt={`${currentLayer.label} layer folder structure`}
-            className={styles.layerImage}
-          />
+    <Carousel
+      items={FSD_LAYERS}
+      getSlideLabel={layer => `${layer.label} 레이어로 이동`}
+      renderSlide={layer => (
+        <div className={styles.slideContainer}>
+          {/* 이미지 */}
+          <div className={styles.imageSection}>
+            <img
+              src={layer.image}
+              alt={`${layer.label} layer folder structure`}
+              className={styles.layerImage}
+            />
+          </div>
+
+          {/* 설명 */}
+          <div className={styles.descriptionSection}>
+            <h3 className={styles.layerName}>{layer.label}</h3>
+            <p className={styles.layerDescription}>{layer.description}</p>
+            <ul className={styles.detailList}>
+              {layer.details.map((detail, i) => (
+                <li key={i} className={styles.detailItem}>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        {/* 설명 */}
-        <div
-          className={styles.descriptionSection}
-          key={`desc-${currentIndex}`}
-        >
-          <h3 className={styles.layerName}>{currentLayer.label}</h3>
-          <p className={styles.layerDescription}>{currentLayer.description}</p>
-          <ul className={styles.detailList}>
-            {currentLayer.details.map((detail, i) => (
-              <li
-                key={i}
-                className={styles.detailItem}
-              >
-                {detail}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* 네비게이션 */}
-      <div className={styles.navigation}>
-        <button
-          className={`${styles.arrowBtn} ${currentIndex === 0 ? styles.disabled : ''}`}
-          onClick={goPrev}
-          disabled={currentIndex === 0}
-          aria-label="이전 레이어"
-        >
-          ←
-        </button>
-
-        <div className={styles.dotContainer}>
-          {FSD_LAYERS.map((layer, index) => (
-            <button
-              key={layer.name}
-              className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}
-              onClick={() => goTo(index)}
-              aria-label={`${layer.label} 레이어로 이동`}
-            >
-              <span className={styles.dotCircle} />
-            </button>
-          ))}
-        </div>
-
-        <button
-          className={`${styles.arrowBtn} ${currentIndex === FSD_LAYERS.length - 1 ? styles.disabled : ''}`}
-          onClick={goNext}
-          disabled={currentIndex === FSD_LAYERS.length - 1}
-          aria-label="다음 레이어"
-        >
-          →
-        </button>
-      </div>
-    </div>
+      )}
+    />
   );
 }

@@ -110,18 +110,10 @@ $font-mono: 'JetBrains Mono', monospace;
     object-fit: cover;
     display: block;
   }
-}
 
-.carouselMedia {
-  aspect-ratio: unset;
-  overflow: visible;
-  padding: 24px 32px;
-
-  // featureCardMedia의 img, video 스타일이 캐러셀 내부 img에도 먹히는 걸 방지
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+  &.fullMedia {
+    aspect-ratio: unset;
+    overflow: visible;
   }
 }
 

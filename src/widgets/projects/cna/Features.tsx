@@ -4,16 +4,15 @@ import useRevealOnScroll from '@/shared/hooks/useRevealOnScroll';
 
 import FsdDetail from '@/features/cna/FsdDetail';
 import FsdCarousel from '@/features/cna/FsdCarousel';
-import AuthenticationDetail from '@/features/cna/AuthenticationDetail';
+import AuthDetail from '@/features/cna/AuthDetail';
 
 // ===== Types =====
 interface FeatureItem {
   title: string;
   desc: ReactNode;
   detail: ReactNode;
-  imgSrc?: string;
-  mediaSrc?: string;
-  carousel?: boolean;
+  media: ReactNode;
+  fullMedia?: boolean;  // true이면 aspect-ratio 해제, 내부 스크롤 허용
 }
 
 // ===== Data =====
@@ -27,19 +26,29 @@ const FEATURES: FeatureItem[] = [
       </>
     ),
     detail: <FsdDetail />,
-    carousel: true,
+    media: <FsdCarousel />,
+    fullMedia: true,
   },
   {
     title: '02. 인증 아키텍처 구현',
     desc: (
       <>
-        HttpOnly 쿠키 기반 인증 아키텍처를 통해{' '}
+        쿠키 기반 인증 아키텍처를 통해{' '}
         <strong className={styles.highlight}>XSS, CSRF 공격에 대응</strong> 가능한 로그인 환경을
         구현했습니다.
       </>
     ),
-    detail: <AuthenticationDetail />,
-    carousel: true,
+    detail: <AuthDetail />,
+    // 이미지, 비디오, 캐러셀 등 자유롭게 지정
+    media: (
+      <video
+        src="/videos/cna/auth-demo.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+    ),
   },
 ];
 
@@ -63,7 +72,6 @@ export default function Features() {
             key={feature.title}
             className={`${styles.featureItem} ${styles.reveal}`}
           >
-            {/* 기능 카드 */}
             <div className={styles.featureCard}>
               {/* 타이틀 및 설명 */}
               <div className={styles.featureCardBody}>
@@ -71,23 +79,11 @@ export default function Features() {
                 <div className={styles.featureCardDesc}>{feature.desc}</div>
               </div>
 
-              {/* 기능 동작 이미지 */}
+              {/* 미디어 영역 */}
               <div
-                className={`${styles.featureCardMedia} ${feature.carousel ? styles.carouselMedia : ''}`}
+                className={`${styles.featureCardMedia} ${feature.fullMedia ? styles.fullMedia : ''}`}
               >
-                {feature.carousel ? (
-                  <FsdCarousel />
-                ) : feature.mediaSrc ? (
-                  <video
-                    src={feature.mediaSrc}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                ) : (
-                  <img src={feature.imgSrc} />
-                )}
+                {feature.media}
               </div>
 
               {/* 구현 과정 */}
