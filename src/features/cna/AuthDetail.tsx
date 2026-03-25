@@ -66,7 +66,7 @@ export default function AuthenticationDetail() {
           하였습니다.
         </li>
         <li>
-          로그아웃 시 accessToken과 refreshToken이 모두 클라이언트 쿠키에서 삭제되어{' '}
+          로그아웃 시 accessToken과 refreshToken이 모두 브라우저 쿠키에서 삭제되어{' '}
           <strong style={{ color: '#22d3ee' }}>토큰 탈취 가능성을 차단</strong>했습니다.
         </li>
       </div>
