@@ -34,8 +34,8 @@ export default function BoardDetail() {
             refetchInterval을 30초로 설정하였습니다.
           </li>
           <li>
-            게시글 등록 API를 useMutation으로 전환하고, onSuccess 콜백에서{' '}
-            <strong>invalidateQueries를 호출</strong>하여 캐시 무효화를 연결했습니다.
+            게시글 등록 API를 useMutation과 연동하고, onSuccess 콜백에서{' '}
+            <strong>invalidateQueries를 호출</strong>하여 기존 캐시 데이터를 무효화했습니다.
           </li>
           <li>
             이를 통해 페이지 복귀, 탭 전환, 네트워크 재연결된 경우와 더불어{' '}
