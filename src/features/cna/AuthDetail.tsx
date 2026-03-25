@@ -69,11 +69,6 @@ export default function AuthenticationDetail() {
           로그아웃 시 accessToken과 refreshToken이 모두 클라이언트 쿠키에서 삭제되어{' '}
           <strong style={{ color: '#22d3ee' }}>토큰 탈취 가능성을 차단</strong>했습니다.
         </li>
-        <li>
-          미인증 상태에서 보호 페이지 접근 시 로그인이 성공적으로 이루어지면 원래 이동하려던
-          페이지로 자동 복귀되도록 함으로써 <strong style={{ color: '#22d3ee' }}>UX를 향상</strong>
-          시켰습니다.
-        </li>
       </div>
     </>
   );

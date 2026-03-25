@@ -91,7 +91,11 @@ export default function ChoiceAndAppear() {
         </li>
         <li>
           서비스 이용자에게 안전하고 편리한 로그인 환경을 제공하여{' '}
-          <strong>보안 안전성과 사용자 경험을 높였</strong>습니다.
+          <strong>보안 안전성을 높였</strong>습니다.
+        </li>
+        <li>
+          미인증 상태에서 보호 페이지 접근 시 로그인 후 원래 페이지로 자동 복귀되도록 함으로써{' '}
+          <strong>사용자 경험을 향상</strong>시켰습니다.
         </li>
       </div>
 
