@@ -5,6 +5,7 @@ import useRevealOnScroll from '@/shared/hooks/useRevealOnScroll';
 import FsdDetail from '@/features/cna/FsdDetail';
 import FsdCarousel from '@/features/cna/FsdCarousel';
 import AuthDetail from '@/features/cna/AuthDetail';
+import EditorDetail from '@/features/cna/EditorDetail';
 
 // ===== Types =====
 interface FeatureItem {
@@ -41,6 +42,25 @@ const FEATURES: FeatureItem[] = [
     mediaSrc: (
       <video
         src="/images/cna/cna_login.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+    ),
+  },
+  {
+    title: '03. 게시글 작성 에디터 구현',
+    desc: (
+      <>
+        Claude Code와 <strong className={styles.highlight}>Tiptap 라이브러리</strong> 를 활용하여
+        게시글 작성 에디터를 직접 구현했습니다.
+      </>
+    ),
+    detail: <EditorDetail />,
+    mediaSrc: (
+      <video
+        src="/images/cna/post_editor.mp4"
         autoPlay
         loop
         muted
