@@ -64,6 +64,10 @@ export default function ChoiceAndAppear() {
             <li>기간: 2025.11 ~ (진행 중)</li>
             <li>인원: FE 1명, BE 2명</li>
             <li>역할: 프론트엔드 총괄 (기여도 100%)</li>
+            <li>
+              특징: 쇼핑몰 운영자의 제안으로{' '}
+              <strong style={{ color: '#f0c808' }}>cafe24 기반 UI</strong> 구현
+            </li>
           </ul>
 
           <ul className={`${styles.overviewText} ${styles.reveal}`}>

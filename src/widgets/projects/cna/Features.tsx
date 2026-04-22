@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import useRevealOnScroll from '@/shared/hooks/useRevealOnScroll';
 
 import FsdDetail from '@/features/cna/FsdDetail';
-import FsdCarousel from '@/features/cna/FsdCarousel';
 import AuthDetail from '@/features/cna/AuthDetail';
 import EditorDetail from '@/features/cna/EditorDetail';
 
@@ -27,7 +26,18 @@ const FEATURES: FeatureItem[] = [
       </>
     ),
     detail: <FsdDetail />,
-    mediaSrc: <FsdCarousel />,
+    mediaSrc: (
+      <img
+        src="/images/cna/fsd/fsd_diagram.png"
+        alt="FSD 아키텍처 다이어그램"
+        // style={{
+        //   maxWidth: '90%',
+        //   height: 'auto',
+        //   display: 'block',
+        //   margin: '0 auto',
+        // }}
+      />
+    ),
     fullMedia: true,
   },
   {
